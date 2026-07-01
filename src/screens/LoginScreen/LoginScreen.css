@@ -1,0 +1,205 @@
+/* ===== LOGIN SCREEN STYLES ===== */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, #0a0e27 0%, #1a0f3a 50%, #0f1229 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elementos decorativos de fondo */
+.login-container::before,
+.login-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.1;
+}
+
+.login-container::before {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #6f42c1, #8b68d9);
+  top: -200px;
+  left: -200px;
+  z-index: 0;
+}
+
+.login-container::after {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #8b68d9, #a889ff);
+  bottom: -200px;
+  right: -200px;
+  z-index: 0;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-sm);
+}
+
+.login-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  background: rgba(26, 31, 58, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: var(--spacing-md) var(--spacing-md);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.form-group input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.form-group input:focus {
+  outline: none;
+  background: rgba(26, 31, 58, 0.8);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+}
+
+.login-submit {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: #fff;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin-top: var(--spacing-sm);
+  box-shadow: 0 10px 30px rgba(111, 66, 193, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-submit:hover {
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-light) 100%);
+  box-shadow: 0 15px 40px rgba(111, 66, 193, 0.4);
+  transform: translateY(-3px);
+}
+
+.login-submit:active {
+  transform: translateY(-1px);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--glass-border);
+}
+
+.login-footer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.login-footer a:hover {
+  color: var(--accent-light);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: var(--spacing-lg);
+  }
+
+  .login-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-container::before,
+  .login-container::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  .login-container::before {
+    top: -150px;
+    left: -150px;
+  }
+
+  .login-container::after {
+    bottom: -150px;
+    right: -150px;
+  }
+}
