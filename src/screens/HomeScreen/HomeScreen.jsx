@@ -452,9 +452,9 @@ export const HomeScreen = () => {
     if (!emailValid) { setModalErrors({ email: 'Ingresá un email válido' }); return }
     setModalSubmitting(true)
     try{
-      await inviteMember(modalWorkspaceId, { email, rol: inviteRole }, authToken)
+      const result = await inviteMember(modalWorkspaceId, { email, rol: inviteRole }, authToken)
       await loadWorkspaceMembers(modalWorkspaceId)
-      pushToast('Invitación enviada')
+      pushToast(result.mailSent ? 'Invitación enviada' : 'La invitación fue creada, pero no se pudo enviar el correo')
       closeModal()
     }
     catch(err){
