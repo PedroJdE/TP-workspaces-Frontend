@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000').replace(/\/+$/, '');
 
 export async function getWorkspaces(token){
     try{
@@ -71,7 +71,12 @@ export async function inviteMember(workspaceId, payload, token){
         })
         const json = await res.json()
         if(!res.ok) throw new Error(json.message || 'Error inviting member')
-        return json.data.invitedMember
+        return {
+            invitedMember: json.data.invitedMember,
+            mailSent: json.data.mailSent,
+            mailError: json.data.mailError,
+            message: json.message
+        }
     }
     catch(error){
         console.error('workspaceService.inviteMember', error)
